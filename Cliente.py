@@ -1,5 +1,3 @@
-
-
 # Declaracion de librerias.
 from socket import *
 from time import sleep
@@ -15,6 +13,7 @@ def Encabezado():
     print("\t1_Listar catalogo.")
     print("\t2_Agregar al Carrito.")
     print("\t3_Ver Carrito.")
+
     print("\t4_Finalizar Compra.\n")
 
 # Funcion para saber si hay canciones repetidas.
@@ -300,7 +299,7 @@ while cont == 0:
                 for i in range(len(canciones_usuario)):
                     list = canciones_usuario[i]
                     print(list)
-                    file_name("CancionesCompradas/" + list + ".mp3")
+                    file_name = "CancionesCompradas/" + list + ".mp3"
                     print(file_name)
                     resivir_archivo(file_name, socket_cliente)
                 

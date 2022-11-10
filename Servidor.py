@@ -92,7 +92,7 @@ while True:
             for i in range(len(lista)):
                 list = lista[i]
                 print(list)
-                file_name("/Canciones(Servidor)/" + list + ".mp3")
+                file_name = "Canciones(Servidor)/" + list + ".mp3"
                 print(file_name)
                 enviar_archivo(socket_servidor, file_name, cliente_addres)
             
