@@ -96,7 +96,7 @@ while True:
                 file_name = "Canciones(Servidor)/" + list + ".mp3"
                 enviar_archivo(socket_servidor, file_name, cliente_addres)
                 print(file_name)
-                sleep(2)
+                sleep(3)
 
             print("\nSe enviaron todas las canciones")
 

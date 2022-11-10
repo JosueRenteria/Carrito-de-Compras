@@ -7,6 +7,15 @@ import re
 import os
 import copy
 import shutil
+import os
+import pickle
+from tkinter import *
+import tkinter as tk
+from tkinter import filedialog
+from tkinter import PhotoImage
+from tkinter import font
+from pygame import mixer
+from music_player import *
 
 
 #--------------------------------------------------------------------------------------
@@ -16,7 +25,8 @@ def Encabezado():
     print("\t1_Listar catalogo.")
     print("\t2_Agregar al Carrito.")
     print("\t3_Ver Carrito.")
-    print("\t4_Reproducir Canciones.\n")
+    print("\t4_Reproducir Canciones.")
+    print("\t0_Salir.")
 
 # Funcion para saber si hay canciones repetidas.
 def canciones_repetidas(canciones_usuario, canciones_compradas):
@@ -240,7 +250,7 @@ cont = 0
 # Canciones que tiene el usuario en su Carrito.
 canciones_usuario = []
 canciones_compradas = []
-
+os.system("cls")
 while cont == 0:
     # Mensaje de entrada.
     Encabezado()
@@ -268,7 +278,7 @@ while cont == 0:
             # Llamamos a la funcion Agregar al Carrito.
             canciones_usuario = Agregar_Carrito(canciones_usuario)
             os.system('cls')
-            print(canciones_usuario) # Print solo para controlar que se hizo correctamente el proceso.
+            #print(canciones_usuario) # Print solo para controlar que se hizo correctamente el proceso.
 
         case  "3":
             # Borramos y Pausamos.
@@ -280,8 +290,8 @@ while cont == 0:
 
             # Condicion si se hizo correctamente el proceso.
             if operacion == 1:
-                print(canciones_compradas)  # Print solo para controlar que se hizo correctamente el proceso.
-                print(canciones_usuario)  # Print solo para controlar que se hizo correctamente el proceso.
+                #print(canciones_compradas)  # Print solo para controlar que se hizo correctamente el proceso.
+                #print(canciones_usuario)  # Print solo para controlar que se hizo correctamente el proceso.
                 
                 # Enviamos la opcion de resivir el resivo de compras.
                 mensaje = "6"
@@ -313,18 +323,17 @@ while cont == 0:
                 os.system('cls')
         case "4":
 
-            import os, subprocess
-
-            winView = 'C:\Users\jos17\Desktop\Carrito de Compras (Canciones)\Reproductor\reproductor.exe'
-            subprocess.run(winView, shell=True)
-
+            Reproductor()
             # Borramos y Pausamos.
-            os.system('pause')
             os.system('cls')
-
-        case _:
+        
+        case "0":
             print("Saliendo")
             cont = 1
+        case _:
+            print("Dato erroneo. Agregue de nuevo.")
+            os.system('pause')
+            os.system('cls')
 
 # Cierre de nuestro socket.
 print("Socket Cerrado")
