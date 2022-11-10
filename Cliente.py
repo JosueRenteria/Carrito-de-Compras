@@ -1,10 +1,13 @@
 # Declaracion de librerias.
 from socket import *
 from time import sleep
+from pathlib import Path
 import sys
 import re
 import os
 import copy
+import shutil
+
 
 #--------------------------------------------------------------------------------------
 # Funcion del encabezado de nuestro menu,
@@ -13,8 +16,7 @@ def Encabezado():
     print("\t1_Listar catalogo.")
     print("\t2_Agregar al Carrito.")
     print("\t3_Ver Carrito.")
-
-    print("\t4_Finalizar Compra.\n")
+    print("\t4_Reproducir Canciones.\n")
 
 # Funcion para saber si hay canciones repetidas.
 def canciones_repetidas(canciones_usuario, canciones_compradas):
@@ -56,7 +58,7 @@ def resivir_archivo(file_name, socket: socket):
     
     # Mensaje de que el Archivo se resivio.
     print ("Catalogo Resivido.")
-    sleep(2)
+    sleep(4)
     os.system('cls')
 
 # Funcion que crea un archivo, de resivo.
@@ -298,16 +300,27 @@ while cont == 0:
                 # Resivimos todas las canciones Compradas.
                 for i in range(len(canciones_usuario)):
                     list = canciones_usuario[i]
-                    print(list)
+                    
+                    # Resivimos la Cancion y la nombramos.
                     file_name = "CancionesCompradas/" + list + ".mp3"
-                    print(file_name)
                     resivir_archivo(file_name, socket_cliente)
                 
-                #canciones_usuario.clear()
+                # Borramos la lista de Canciones del Carrito.
+                canciones_usuario.clear()
 
                 # Borramos y Pausamos.
                 os.system('pause')
                 os.system('cls')
+        case "4":
+
+            import os, subprocess
+
+            winView = 'C:\Users\jos17\Desktop\Carrito de Compras (Canciones)\Reproductor\reproductor.exe'
+            subprocess.run(winView, shell=True)
+
+            # Borramos y Pausamos.
+            os.system('pause')
+            os.system('cls')
 
         case _:
             print("Saliendo")

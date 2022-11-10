@@ -27,6 +27,7 @@ def enviar_archivo(socket: socket, file_name, cliente_addres):
             data = f.read(buffer)
     
     # Cierre de nuestro archivo.
+    sleep(4)
     f.close()
 
 def Mostrar_resivo(nombre):
@@ -90,12 +91,13 @@ while True:
 
             # Aqui se envia todas las canciones.
             for i in range(len(lista)):
+                # Enviamos las canciones compradas.
                 list = lista[i]
-                print(list)
                 file_name = "Canciones(Servidor)/" + list + ".mp3"
-                print(file_name)
                 enviar_archivo(socket_servidor, file_name, cliente_addres)
-            
+                print(file_name)
+                sleep(2)
+
             print("\nSe enviaron todas las canciones")
 
         case _:
